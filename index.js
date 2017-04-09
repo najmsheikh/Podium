@@ -1,6 +1,9 @@
-var config = require('./config.json');
-var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
-var fs = require('fs');
+const config = require('./config.json');
+const SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
+const fs = require('fs');
+const express = require('express');
+const app = express();
+const port = 3000;
 
 var speech_to_text = new SpeechToTextV1({
     username: config.WATSON_USER,
@@ -20,6 +23,23 @@ var params = {
 //         console.log(JSON.stringify(res, null, 2));
 // });
 
-fs.createReadStream('./recording.wav')
-  .pipe(speech_to_text.createRecognizeStream({ content_type: 'audio/l16; rate=44100' }))
-  .pipe(fs.createWriteStream('./transcription.txt'));
+app.get('/', (request, response) => {
+    response.send('Hello from Express!')
+});
+
+app.post('/present', (request, response) => {
+	console.log(request);
+});
+
+
+// fs.createReadStream('./recording.wav')
+//     .pipe(speech_to_text.createRecognizeStream({ content_type: 'audio/l16; rate=44100' }))
+//     .pipe(fs.createWriteStream('./transcription.txt'));
+
+app.listen(port, (err) => {
+    if (err) {
+        return console.log('something bad happened', err)
+    }
+
+    console.log(`server is listening on ${port}`)
+});
