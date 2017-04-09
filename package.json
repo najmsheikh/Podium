@@ -1,0 +1,22 @@
+{
+  "name": "podium",
+  "version": "0.0.1",
+  "description": "VR app to help people with social anxiety or stage fright practice presenting.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/najmsheikh/Podium.git"
+  },
+  "author": "Najm Sheikh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/najmsheikh/Podium/issues"
+  },
+  "homepage": "https://github.com/najmsheikh/Podium#readme",
+  "dependencies": {
+    "watson-developer-cloud": "^2.28.1"
+  }
+}
