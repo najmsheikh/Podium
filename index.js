@@ -2,8 +2,13 @@ const config = require('./config.json');
 const SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
 const fs = require('fs');
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
-const port = 3000;
+const port = 1989;
+
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 
 var speech_to_text = new SpeechToTextV1({
     username: config.WATSON_USER,
@@ -28,7 +33,7 @@ app.get('/', (request, response) => {
 });
 
 app.post('/present', (request, response) => {
-	console.log(request);
+	response.send(request.body);
 });
 
 
